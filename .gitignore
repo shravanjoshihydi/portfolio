@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+.vite
+.netlify
+
+# Local editor / tool config
+.claude/settings.local.json
+
+# Source material, not part of the site
+prompt.md
+Shravan_Joshi_Resume*.docx

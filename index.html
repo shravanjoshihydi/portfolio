@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shravan Joshi — Frontend Software Engineer</title>
+    <meta
+      name="description"
+      content="Frontend Software Engineer with 4 years building CMS-driven web platforms. Sole maintainer of an internal CMS template builder used to migrate 300+ production websites; now building a Next.js CMS and renderer engine."
+    />
+    <meta name="theme-color" content="#0A0B0D" />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shravan Joshi — Frontend Software Engineer" />
+    <meta
+      property="og:description"
+      content="Sole maintainer of an internal CMS platform used to migrate 300+ production websites. Now building a Next.js-based CMS and renderer engine."
+    />
+    <meta property="og:image" content="/profilepic.jpg" />
+    <meta name="twitter:card" content="summary" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0B0D'/%3E%3Ctext x='16' y='22' font-family='Inter,system-ui,sans-serif' font-size='16' font-weight='650' fill='%2335C08F' text-anchor='middle'%3ESJ%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="apple-touch-icon" href="/profilepic.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!--
+      Netlify detects forms by parsing the deployed HTML at build time, and the
+      real form is rendered by React on the client. This hidden twin is what
+      registers the "contact" form; the React form posts to it. Keep the field
+      names in sync with src/components/Contact.tsx.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
