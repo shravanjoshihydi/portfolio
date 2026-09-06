@@ -9,7 +9,7 @@ export const profile = {
   title: "Frontend Software Engineer, moving towards full-stack.",
   location: "Bengaluru, India",
   statement:
-    "Sole maintainer of an internal CMS platform used to migrate 800+ production websites to a modern React architecture. Now building a Next.js-based CMS and renderer engine.",
+    "Sole maintainer of an internal CMS platform used to migrate 300+ production websites to a modern React architecture. Now building a Next.js-based CMS and renderer engine.",
   email: "shravanjoshihydi@gmail.com",
   linkedin: "https://linkedin.com/in/shravanjoshihydi",
   linkedinLabel: "in/shravanjoshihydi",
@@ -26,7 +26,7 @@ export const navItems = [
 ] as const;
 
 export const stats = [
-  { value: "800+", label: "Production sites migrated" },
+  { value: "300+", label: "Production sites migrated" },
   { value: "3", label: "CMS builder versions shipped" },
   { value: "30+", label: "Figma-to-code templates" },
   { value: "90+", label: "Lighthouse performance" },
@@ -35,7 +35,7 @@ export const stats = [
 export const about = {
   lead: "Frontend Software Engineer with 4 years of experience building and maintaining CMS-driven web platforms for the automotive dealership industry.",
   paragraphs: [
-    "Sole maintainer of an internal CMS template builder across three major versions, used to migrate 800+ dealership websites to a modern React architecture and cutting per-template delivery from a three-week sprint to one week.",
+    "Sole maintainer of an internal CMS template builder across three major versions, used to migrate 300+ dealership websites to a modern React architecture and cutting per-template delivery from a three-week sprint to one week.",
     "Currently building a Next.js-based CMS and frontend renderer engine, including a shared component library and a proof-of-concept AI-assisted site builder — while keeping the legacy JSP/Java platform running alongside it.",
     "Works closely with backend teams on Java and Node.js services, with hands-on experience writing the API layers that connect Next.js frontends to existing Java systems.",
   ],
@@ -92,7 +92,7 @@ export const experience = [
     current: false,
     bullets: [
       "Sole contributor and maintainer of the CMS template builder across three major versions, cutting per-template delivery from a three-week sprint to one week by moving most configuration work to the support team.",
-      "Migrated 800+ dealership websites to an updated React architecture within a month using the builder's configuration system, handling per-template-group settings and component-level tweaks.",
+      "Migrated 300+ dealership websites to an updated React architecture within a month using the builder's configuration system, handling per-template-group settings and component-level tweaks.",
       "Delivered 30+ responsive templates from Figma designs across 20+ distinct template requirements, each needing purpose-built component and template versions.",
       "Integrated GuestSuite, Google Tag Manager and cookie consent management across the template estate.",
       "Held Lighthouse performance at 90+ using lazy loading and the Intersection Observer API.",
@@ -119,7 +119,7 @@ export const flagships = [
       {
         term: "Outcome",
         detail:
-          "800+ production dealership websites migrated to the React architecture inside a month. Per-template delivery dropped from a three-week sprint to one week, and routine content changes left the engineering queue entirely.",
+          "300+ production dealership websites migrated to the React architecture inside a month. Per-template delivery dropped from a three-week sprint to one week, and routine content changes left the engineering queue entirely.",
       },
     ],
     tech: ["React", "Craft.js", "JavaScript", "Schema design", "SCSS"],

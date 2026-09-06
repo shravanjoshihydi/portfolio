@@ -23,7 +23,7 @@ export function Hero() {
 
             <Reveal as="p" className="hero-statement" delay={120}>
               Sole maintainer of an internal CMS platform used to migrate{" "}
-              <strong>800+ production websites</strong> to a modern React architecture. Now
+              <strong>300+ production websites</strong> to a modern React architecture. Now
               building a Next.js-based CMS and renderer engine.
             </Reveal>
 
