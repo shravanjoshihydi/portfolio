@@ -6,7 +6,7 @@
 export const profile = {
   name: "Shravan Joshi",
   role: "Frontend Software Engineer",
-  title: "Frontend Software Engineer, moving toward full-stack.",
+  title: "Frontend Software Engineer, moving towards full-stack.",
   location: "Bengaluru, India",
   statement:
     "Sole maintainer of an internal CMS platform used to migrate 300+ production websites to a modern React architecture. Now building a Next.js-based CMS and renderer engine.",
