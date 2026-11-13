@@ -99,6 +99,23 @@ export function Contact() {
                 </span>
               </a>
             </li>
+            {profile.whatsapp && (
+              <li>
+                <span className="contact-label">WhatsApp</span>
+                <a
+                  href={`https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(
+                    `Hi ${profile.name.split(" ")[0]}, I came across your portfolio and wanted to connect.`,
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Message me on WhatsApp
+                  <span className="ext" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              </li>
+            )}
           </ul>
         </Reveal>
 
