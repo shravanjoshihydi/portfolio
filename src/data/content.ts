@@ -15,6 +15,7 @@ export const profile = {
   linkedinLabel: "in/shravanjoshihydi",
   github: "https://github.com/shravanjoshihydi",
   githubLabel: "shravanjoshihydi",
+  whatsapp: "919491380199" as string,
 } as const;
 
 export const navItems = [
