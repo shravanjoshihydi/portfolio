@@ -6,33 +6,67 @@ import { Section } from "./Section";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-const FORM_NAME = "contact";
+// Get a free access key at https://web3forms.com (enter the email address you
+// want messages delivered to). Put it in a `.env` file at the project root:
+//   VITE_WEB3FORMS_KEY=your-access-key
+// The key is safe to expose in client code — it can only send mail to you.
+const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
+const ENDPOINT = "https://api.web3forms.com/submit";
 
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [errorDetail, setErrorDetail] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
+    const data = new FormData(form);
+
+    // Honeypot: real users never fill this hidden field.
+    if (data.get("botcheck")) return;
+
+    if (!ACCESS_KEY) {
+      console.error("Missing VITE_WEB3FORMS_KEY — add it to your .env file.");
+      setErrorDetail("");
+      setStatus("error");
+      return;
+    }
 
     setStatus("sending");
+    setErrorDetail("");
 
-    // Netlify Forms accepts a URL-encoded POST to any path on the site; the
-    // hidden twin of this form in index.html is what registers it at build time.
-    const body = new URLSearchParams(
-      new FormData(form) as unknown as Record<string, string>,
-    ).toString();
+    const name = String(data.get("name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const message = String(data.get("message") ?? "");
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch(ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: `Portfolio contact from ${name}`,
+          from_name: "Portfolio contact form",
+          replyto: email, // hitting "Reply" in your inbox goes to the sender
+          name,
+          email,
+          message,
+        }),
       });
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) {
+        throw new Error(result?.message ?? `Request failed: ${response.status}`);
+      }
+
       form.reset();
       setStatus("sent");
-    } catch {
+    } catch (err) {
+      console.error("Contact form error:", err);
+      setErrorDetail(err instanceof Error ? err.message : "");
       setStatus("error");
     }
   }
@@ -73,18 +107,14 @@ export function Contact() {
         <Reveal
           as="form"
           className="contact-form"
-          name={FORM_NAME}
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
+          noValidate={false}
           delay={80}
         >
-          <input type="hidden" name="form-name" value={FORM_NAME} />
           <p className="hp-field">
             <label>
               Leave this field empty
-              <input name="bot-field" tabIndex={-1} autoComplete="off" />
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" />
             </label>
           </p>
 
@@ -121,8 +151,8 @@ export function Contact() {
             {status === "sent" && "Message sent. I'll get back to you."}
             {status === "error" && (
               <>
-                Could not send right now — email me directly at{" "}
-                <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+                Could not send right now{errorDetail ? ` (${errorDetail})` : ""} — email
+                me directly at <a href={`mailto:${profile.email}`}>{profile.email}</a>.
               </>
             )}
           </p>
