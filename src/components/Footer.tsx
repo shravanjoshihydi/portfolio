@@ -7,7 +7,7 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {profile.name}
         </p>
-        <p className="footer-meta">Built with React, TypeScript and Vite.</p>
+        <p className="footer-meta">Hope you liked my profile. Wish to meet you soon.</p>
       </div>
     </footer>
   );
