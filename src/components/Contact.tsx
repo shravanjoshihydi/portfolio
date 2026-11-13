@@ -6,11 +6,9 @@ import { Section } from "./Section";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-// Get a free access key at https://web3forms.com (enter the email address you
-// want messages delivered to). Put it in a `.env` file at the project root:
-//   VITE_WEB3FORMS_KEY=your-access-key
-// The key is safe to expose in client code — it can only send mail to you.
-const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
+// Web3Forms access key. It's safe to expose in client code — it can only send
+// mail to the inbox it was registered with.
+const ACCESS_KEY = "7f014615-3181-4232-843f-cbd36bf4dc9b";
 const ENDPOINT = "https://api.web3forms.com/submit";
 
 export function Contact() {
